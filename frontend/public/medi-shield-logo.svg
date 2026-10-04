@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Medi-Shield Logo</title>
+  <desc id="desc">
+    A futuristic medical shield containing a medical cross, AI core,
+    heartbeat pulse and verification mark, representing medication safety.
+  </desc>
+
+  <defs>
+    <linearGradient id="shieldGradient" x1="80" y1="40" x2="430" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5CEBFF"/>
+      <stop offset="0.48" stop-color="#7D8CFF"/>
+      <stop offset="1" stop-color="#B36CFF"/>
+    </linearGradient>
+
+    <linearGradient id="coreGradient" x1="170" y1="150" x2="350" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9CF7FF"/>
+      <stop offset="0.5" stop-color="#5CEBFF"/>
+      <stop offset="1" stop-color="#9B7CFF"/>
+    </linearGradient>
+
+    <linearGradient id="pulseGradient" x1="105" y1="280" x2="405" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5CEBFF"/>
+      <stop offset="0.5" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#B36CFF"/>
+    </linearGradient>
+
+    <radialGradient id="coreGlow">
+      <stop offset="0" stop-color="#5CEBFF" stop-opacity="0.7"/>
+      <stop offset="0.5" stop-color="#7D8CFF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#7D8CFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+    <clipPath id="shieldClip">
+      <path d="M256 42
+               L420 105
+               V236
+               C420 340 357 425 256 470
+               C155 425 92 340 92 236
+               V105
+               Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Transparent background -->
+
+  <!-- Ambient AI glow -->
+  <circle cx="256" cy="250" r="170"
+          fill="url(#coreGlow)"
+          filter="url(#softGlow)"/>
+
+  <!-- Outer technological orbit -->
+  <path d="M256 18
+           C389 18 494 123 494 256
+           C494 389 389 494 256 494
+           C123 494 18 389 18 256
+           C18 123 123 18 256 18Z"
+        fill="none"
+        stroke="#5CEBFF"
+        stroke-opacity="0.12"
+        stroke-width="2"/>
+
+  <path d="M72 256
+           C72 154 154 72 256 72
+           C358 72 440 154 440 256"
+        fill="none"
+        stroke="#9B7CFF"
+        stroke-opacity="0.2"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-dasharray="5 15"/>
+
+  <!-- Main shield -->
+  <path d="M256 42
+           L420 105
+           V236
+           C420 340 357 425 256 470
+           C155 425 92 340 92 236
+           V105
+           Z"
+        fill="#07101E"
+        stroke="url(#shieldGradient)"
+        stroke-width="12"
+        stroke-linejoin="round"/>
+
+  <!-- Inner shield -->
+  <path d="M256 70
+           L392 121
+           V233
+           C392 320 339 392 256 433
+           C173 392 120 320 120 233
+           V121
+           Z"
+        fill="none"
+        stroke="#5CEBFF"
+        stroke-opacity="0.2"
+        stroke-width="2"/>
+
+  <!-- Circuit traces inside shield -->
+  <g clip-path="url(#shieldClip)"
+     fill="none"
+     stroke-linecap="round">
+
+    <path d="M128 174 H176 L195 155 H218"
+          stroke="#5CEBFF"
+          stroke-opacity="0.38"
+          stroke-width="3"/>
+    <circle cx="128" cy="174" r="5" fill="#5CEBFF"/>
+
+    <path d="M384 174 H336 L317 155 H294"
+          stroke="#B36CFF"
+          stroke-opacity="0.38"
+          stroke-width="3"/>
+    <circle cx="384" cy="174" r="5" fill="#B36CFF"/>
+
+    <path d="M128 342 H175 L196 363 H220"
+          stroke="#5CEBFF"
+          stroke-opacity="0.3"
+          stroke-width="3"/>
+    <circle cx="128" cy="342" r="5" fill="#5CEBFF"/>
+
+    <path d="M384 342 H337 L316 363 H292"
+          stroke="#B36CFF"
+          stroke-opacity="0.3"
+          stroke-width="3"/>
+    <circle cx="384" cy="342" r="5" fill="#B36CFF"/>
+  </g>
+
+  <!-- AI orbital rings -->
+  <ellipse cx="256" cy="230"
+           rx="106" ry="44"
+           fill="none"
+           stroke="#5CEBFF"
+           stroke-opacity="0.24"
+           stroke-width="3"
+           transform="rotate(-18 256 230)"/>
+
+  <ellipse cx="256" cy="230"
+           rx="106" ry="44"
+           fill="none"
+           stroke="#B36CFF"
+           stroke-opacity="0.2"
+           stroke-width="3"
+           transform="rotate(42 256 230)"/>
+
+  <!-- AI core -->
+  <circle cx="256" cy="230"
+          r="67"
+          fill="#081525"
+          stroke="url(#coreGradient)"
+          stroke-width="5"
+          filter="url(#glow)"/>
+
+  <circle cx="256" cy="230"
+          r="49"
+          fill="none"
+          stroke="#5CEBFF"
+          stroke-opacity="0.2"
+          stroke-width="2"/>
+
+  <!-- AI neural nodes -->
+  <g fill="#5CEBFF">
+    <circle cx="222" cy="198" r="5"/>
+    <circle cx="290" cy="198" r="5"/>
+    <circle cx="214" cy="237" r="5"/>
+    <circle cx="298" cy="237" r="5"/>
+    <circle cx="238" cy="268" r="5"/>
+    <circle cx="274" cy="268" r="5"/>
+  </g>
+
+  <g stroke="#7D8CFF"
+     stroke-width="3"
+     stroke-linecap="round"
+     opacity="0.8">
+
+    <path d="M222 198 L238 215"/>
+    <path d="M290 198 L274 215"/>
+    <path d="M214 237 L239 230"/>
+    <path d="M298 237 L273 230"/>
+    <path d="M238 268 L247 247"/>
+    <path d="M274 268 L265 247"/>
+  </g>
+
+  <!-- Medical cross -->
+  <g filter="url(#glow)">
+    <rect x="240" y="187"
+          width="32"
+          height="86"
+          rx="10"
+          fill="url(#coreGradient)"/>
+
+    <rect x="213" y="214"
+          width="86"
+          height="32"
+          rx="10"
+          fill="url(#coreGradient)"/>
+  </g>
+
+  <!-- Heartbeat / safety pulse -->
+  <path d="M116 302
+           H164
+           L181 302
+           L195 278
+           L211 324
+           L228 288
+           L242 302
+           H278
+           L294 302
+           L309 279
+           L324 323
+           L341 288
+           L354 302
+           H396"
+        fill="none"
+        stroke="url(#pulseGradient)"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter="url(#glow)"/>
+
+  <!-- Verification shield/check -->
+  <circle cx="354" cy="356"
+          r="34"
+          fill="#07101E"
+          stroke="#5CEBFF"
+          stroke-width="4"/>
+
+  <path d="M338 356
+           L350 368
+           L372 343"
+        fill="none"
+        stroke="#9CF7FF"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Small intelligence spark -->
+  <g filter="url(#glow)">
+    <path d="M158 116
+             L164 132
+             L180 138
+             L164 144
+             L158 160
+             L152 144
+             L136 138
+             L152 132
+             Z"
+          fill="#5CEBFF"/>
+
+    <path d="M355 119
+             L360 131
+             L372 136
+             L360 141
+             L355 153
+             L350 141
+             L338 136
+             L350 131
+             Z"
+          fill="#B36CFF"/>
+  </g>
+
+  <!-- Bottom safety indicator -->
+  <path d="M207 399 H305"
+        stroke="url(#shieldGradient)"
+        stroke-width="5"
+        stroke-linecap="round"
+        opacity="0.65"/>
+
+  <circle cx="192" cy="399" r="4" fill="#5CEBFF"/>
+  <circle cx="320" cy="399" r="4" fill="#B36CFF"/>
+
+</svg>

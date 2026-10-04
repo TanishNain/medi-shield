@@ -1,0 +1,1428 @@
+/* =========================================================
+   MEDLY — AI COMPANION
+   ========================================================= */
+
+.ms-medly-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(86, 218, 255, 0.07),
+      transparent 38%
+    ),
+    rgba(2, 7, 13, 0.76);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: mdx-layer-in 220ms ease-out;
+}
+
+.mdx-panel {
+  --mdx-cyan: #79e8ff;
+  --mdx-blue: #8bdcff;
+  --mdx-violet: #9e91ff;
+  --mdx-green: #73e6a0;
+
+  position: relative;
+
+  width: min(94vw, 720px);
+  height: min(84vh, 650px);
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(166, 228, 240, 0.13);
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 27, 39, 0.98),
+      rgba(5, 13, 22, 0.99)
+    );
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.56),
+    0 0 0 1px rgba(108, 220, 255, 0.025),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+
+  isolation: isolate;
+
+  animation: mdx-panel-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   AI AMBIENCE
+   ========================================================= */
+
+.mdx-ai-ambient {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+  overflow: hidden;
+
+  z-index: -1;
+}
+
+.mdx-ambient-orb {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  filter: blur(60px);
+  opacity: 0.08;
+}
+
+.orb-one {
+  top: -110px;
+  right: -70px;
+
+  background: #65e8ff;
+
+  animation: mdx-ambient-drift-one 8s ease-in-out infinite;
+}
+
+.orb-two {
+  left: -100px;
+  bottom: 80px;
+
+  background: #8277ff;
+
+  animation: mdx-ambient-drift-two 10s ease-in-out infinite;
+}
+
+.orb-three {
+  right: 30%;
+  bottom: -130px;
+
+  background: #54ffc1;
+
+  animation: mdx-ambient-drift-three 12s ease-in-out infinite;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.mdx-header {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  min-height: 84px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px 15px 20px;
+
+  border-bottom: 1px solid
+    rgba(195, 228, 238, 0.08);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0)
+    );
+
+  z-index: 5;
+}
+
+.mdx-header-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+/* =========================================================
+   AI AVATAR
+   ========================================================= */
+
+.mdx-avatar {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  flex: 0 0 54px;
+
+  display: grid;
+  place-items: center;
+}
+
+.mdx-avatar-core {
+  position: relative;
+  z-index: 5;
+
+  width: 39px;
+  height: 39px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(135, 229, 255, 0.35);
+
+  background:
+    radial-gradient(
+      circle at 38% 30%,
+      rgba(174, 243, 255, 0.17),
+      rgba(33, 76, 96, 0.12) 45%,
+      rgba(2, 12, 21, 0.94)
+    );
+
+  box-shadow:
+    0 0 12px rgba(94, 220, 255, 0.17),
+    inset 0 0 12px rgba(106, 224, 255, 0.07);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.mdx-avatar-core img {
+  width: 25px;
+  height: 25px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(121, 232, 255, 0.65)
+    );
+}
+
+.mdx-avatar-halo {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.halo-back {
+  inset: 4px;
+
+  border: 1px solid
+    rgba(117, 227, 255, 0.12);
+
+  box-shadow:
+    0 0 14px rgba(117, 227, 255, 0.07);
+}
+
+.halo-front {
+  inset: 0;
+
+  border: 1px dashed
+    rgba(117, 227, 255, 0.18);
+
+  transform: rotate(20deg);
+}
+
+.mdx-neural {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #91edff;
+
+  box-shadow:
+    0 0 7px rgba(113, 230, 255, 0.9);
+
+  opacity: 0.7;
+}
+
+.neural-one {
+  top: 7px;
+  left: 23px;
+}
+
+.neural-two {
+  right: 4px;
+  top: 25px;
+}
+
+.neural-three {
+  bottom: 8px;
+  left: 13px;
+}
+
+.neural-four {
+  left: 5px;
+  top: 20px;
+}
+
+/* =========================================================
+   SPEAKING AI AVATAR
+   ========================================================= */
+
+.mdx-avatar.is-speaking .mdx-avatar-core {
+  transform: scale(1.07);
+
+  box-shadow:
+    0 0 13px rgba(117, 231, 255, 0.45),
+    0 0 30px rgba(117, 231, 255, 0.16),
+    inset 0 0 14px rgba(140, 240, 255, 0.12);
+
+  animation: mdx-ai-core-speaking 1.35s ease-in-out infinite;
+}
+
+.mdx-avatar.is-speaking .halo-back {
+  border-color: rgba(116, 232, 255, 0.32);
+
+  box-shadow:
+    0 0 18px rgba(116, 232, 255, 0.2);
+}
+
+.mdx-avatar.is-speaking .halo-front {
+  border-color: rgba(143, 232, 255, 0.45);
+
+  animation:
+    mdx-halo-rotate 3s linear infinite;
+}
+
+.mdx-avatar.is-speaking .mdx-neural {
+  opacity: 1;
+
+  animation:
+    mdx-neural-flicker 900ms ease-in-out infinite alternate;
+}
+
+.mdx-avatar.is-speaking .neural-two {
+  animation-delay: 130ms;
+}
+
+.mdx-avatar.is-speaking .neural-three {
+  animation-delay: 260ms;
+}
+
+.mdx-avatar.is-speaking .neural-four {
+  animation-delay: 390ms;
+}
+
+/* =========================================================
+   SPARKLES
+   ========================================================= */
+
+.mdx-sparkle {
+  position: absolute;
+
+  z-index: 8;
+
+  width: 5px;
+  height: 5px;
+
+  transform: rotate(45deg);
+
+  background: #b7f6ff;
+
+  box-shadow:
+    0 0 5px #91edff,
+    0 0 12px rgba(105, 231, 255, 0.9);
+
+  opacity: 0;
+
+  animation:
+    mdx-sparkle-pop 1.45s ease-in-out infinite;
+}
+
+.sparkle-one {
+  top: 2px;
+  right: 4px;
+}
+
+.sparkle-two {
+  right: -2px;
+  bottom: 13px;
+
+  width: 3px;
+  height: 3px;
+
+  animation-delay: 260ms;
+}
+
+.sparkle-three {
+  left: 3px;
+  bottom: 5px;
+
+  width: 4px;
+  height: 4px;
+
+  animation-delay: 520ms;
+}
+
+.sparkle-four {
+  left: -1px;
+  top: 13px;
+
+  width: 3px;
+  height: 3px;
+
+  animation-delay: 780ms;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.mdx-title-area {
+  min-width: 0;
+}
+
+.mdx-name-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mdx-name-row h2 {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1;
+
+  font-weight: 750;
+  letter-spacing: -0.02em;
+
+  color: #f2fbfd;
+}
+
+.mdx-ai-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 18px;
+  padding: 0 6px;
+
+  border-radius: 6px;
+
+  border: 1px solid
+    rgba(121, 232, 255, 0.22);
+
+  color: #86eaff;
+
+  background:
+    rgba(85, 220, 255, 0.07);
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.mdx-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 7px;
+
+  color:
+    rgba(215, 235, 240, 0.48);
+
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+.mdx-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #72e9aa;
+
+  box-shadow:
+    0 0 7px rgba(114, 233, 170, 0.75);
+}
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.mdx-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  flex-shrink: 0;
+}
+
+.mdx-clear-chat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  height: 31px;
+  padding: 0 10px;
+
+  border: 1px solid
+    rgba(124, 232, 245, 0.16);
+
+  border-radius: 10px;
+
+  color:
+    rgba(221, 243, 247, 0.7);
+
+  background:
+    rgba(104, 221, 244, 0.035);
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.mdx-clear-chat:hover {
+  color: #b8f3ff;
+
+  border-color:
+    rgba(124, 232, 245, 0.35);
+
+  background:
+    rgba(104, 221, 244, 0.09);
+
+  transform: translateY(-1px);
+}
+
+.mdx-clear-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.mdx-close-btn {
+  position: relative;
+
+  width: 37px;
+  height: 37px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid
+    rgba(221, 239, 244, 0.1);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transform: none !important;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.mdx-close-btn:hover {
+  background:
+    rgba(255, 255, 255, 0.07);
+
+  border-color:
+    rgba(190, 229, 236, 0.2);
+}
+
+.mdx-close-btn span {
+  position: absolute;
+
+  width: 15px;
+  height: 1.5px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(229, 246, 250, 0.72);
+}
+
+.mdx-close-btn span:first-child {
+  transform: rotate(45deg);
+}
+
+.mdx-close-btn span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* =========================================================
+   TALKING PANEL MOTION
+   ========================================================= */
+
+.mdx-panel.is-speaking {
+  animation:
+    mdx-panel-talk 2.4s ease-in-out infinite;
+}
+
+.mdx-panel.is-thinking .mdx-status-dot {
+  background: #8bdcff;
+
+  box-shadow:
+    0 0 8px rgba(139, 220, 255, 0.9);
+
+  animation:
+    mdx-status-thinking 900ms ease-in-out infinite;
+}
+
+.mdx-panel.is-listening .mdx-status-dot {
+  background: #9e91ff;
+
+  box-shadow:
+    0 0 9px rgba(158, 145, 255, 0.9);
+}
+
+/* =========================================================
+   CHAT AREA
+   ========================================================= */
+
+.mdx-messages {
+  position: relative;
+
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  overflow-y: auto;
+
+  padding: 22px 21px 18px;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(125, 218, 237, 0.15)
+    transparent;
+}
+
+.mdx-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mdx-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mdx-messages::-webkit-scrollbar-thumb {
+  background:
+    rgba(125, 218, 237, 0.16);
+
+  border-radius: 999px;
+}
+
+.mdx-chat-glow {
+  position: absolute;
+
+  top: -130px;
+  left: 30%;
+
+  width: 300px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(94, 225, 255, 0.045);
+
+  filter: blur(55px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.mdx-message {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  animation:
+    mdx-message-in 220ms ease-out;
+}
+
+.mdx-message.is-user {
+  justify-content: flex-end;
+}
+
+.mdx-message.is-assistant {
+  justify-content: flex-start;
+}
+
+.mdx-message-avatar {
+  flex: 0 0 27px;
+
+  width: 27px;
+  height: 27px;
+
+  display: grid;
+  place-items: center;
+
+  margin-top: 19px;
+}
+
+.mdx-mini-core {
+  width: 26px;
+  height: 26px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(116, 226, 250, 0.18);
+
+  background:
+    rgba(86, 207, 235, 0.045);
+
+  box-shadow:
+    0 0 10px rgba(96, 220, 255, 0.08);
+}
+
+.mdx-mini-core img {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(120, 231, 255, 0.55)
+    );
+}
+
+.mdx-message-content {
+  max-width: min(82%, 570px);
+}
+
+.mdx-message.is-user .mdx-message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.mdx-message-label {
+  margin: 0 0 5px 3px;
+
+  color:
+    rgba(208, 232, 238, 0.32);
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.mdx-message.is-user .mdx-message-label {
+  margin-right: 3px;
+}
+
+.mdx-bubble {
+  padding: 12px 14px;
+
+  border: 1px solid
+    rgba(188, 224, 232, 0.08);
+
+  border-radius: 15px 15px 15px 4px;
+
+  color:
+    rgba(237, 248, 251, 0.86);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  font-size: 12px;
+  line-height: 1.62;
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.mdx-message.is-user .mdx-bubble {
+  border-radius: 15px 15px 4px 15px;
+
+  border-color:
+    rgba(121, 232, 255, 0.15);
+
+  color: #e9fbff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(87, 213, 239, 0.11),
+      rgba(95, 113, 255, 0.07)
+    );
+}
+
+.mdx-thinking-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  width: 55px;
+
+  padding: 13px 15px;
+
+  border: 1px solid
+    rgba(188, 224, 232, 0.08);
+
+  border-radius: 15px 15px 15px 4px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+.mdx-thinking-bubble span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #7ce8f5;
+
+  animation:
+    mdx-thinking-dot 900ms ease-in-out infinite;
+}
+
+.mdx-thinking-bubble span:nth-child(2) {
+  animation-delay: 130ms;
+}
+
+.mdx-thinking-bubble span:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+/* =========================================================
+   COMPOSER
+   ========================================================= */
+
+.mdx-composer {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  padding: 12px 17px 13px;
+
+  border-top: 1px solid
+    rgba(195, 228, 238, 0.07);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 15, 24, 0.82),
+      rgba(5, 12, 20, 0.98)
+    );
+
+  z-index: 5;
+}
+
+.mdx-composer-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  min-height: 49px;
+
+  padding: 6px;
+
+  border: 1px solid
+    rgba(186, 224, 232, 0.1);
+
+  border-radius: 16px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.mdx-composer-inner:focus-within {
+  border-color:
+    rgba(121, 232, 255, 0.22);
+
+  box-shadow:
+    0 0 0 3px rgba(121, 232, 255, 0.025),
+    inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.mdx-composer textarea {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+
+  max-height: 90px;
+
+  padding: 9px 4px;
+
+  border: 0;
+  outline: none;
+  resize: none;
+
+  color: #eaf8fb;
+
+  background: transparent;
+
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.mdx-composer textarea::placeholder {
+  color:
+    rgba(211, 233, 239, 0.3);
+}
+
+.mdx-action-btn,
+.mdx-send-btn {
+  flex: 0 0 auto;
+
+  border: 0;
+
+  cursor: pointer;
+
+  font: inherit;
+}
+
+.mdx-action-btn {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color:
+    rgba(216, 241, 246, 0.58);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.mdx-action-btn:hover {
+  color: #9defff;
+
+  background:
+    rgba(110, 224, 249, 0.08);
+}
+
+.mdx-action-btn.is-listening {
+  color: #b6acff;
+
+  background:
+    rgba(151, 134, 255, 0.12);
+
+  box-shadow:
+    0 0 16px rgba(151, 134, 255, 0.12);
+}
+
+.mdx-mic-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.mdx-composer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mdx-language {
+  height: 34px;
+
+  padding: 0 7px;
+
+  border: 1px solid
+    rgba(185, 224, 232, 0.08);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  color:
+    rgba(220, 243, 247, 0.55);
+
+  background:
+    #0b1722;
+
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.mdx-send-btn {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #041017;
+
+  background:
+    linear-gradient(
+      135deg,
+      #9bf1ff,
+      #74d8ed
+    );
+
+  box-shadow:
+    0 0 13px rgba(121, 232, 255, 0.12);
+
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.mdx-send-btn span {
+  font-size: 18px;
+  font-weight: 800;
+
+  transform: translateY(-1px);
+}
+
+.mdx-send-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 0 20px rgba(121, 232, 255, 0.24);
+}
+
+.mdx-send-btn:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.mdx-composer-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  margin-top: 8px;
+
+  color:
+    rgba(207, 231, 237, 0.22);
+
+  font-size: 8px;
+}
+
+.mdx-hint-separator {
+  color:
+    rgba(121, 232, 255, 0.22);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes mdx-layer-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mdx-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mdx-panel-talk {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+@keyframes mdx-message-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mdx-ai-core-speaking {
+  0%,
+  100% {
+    transform: scale(1.04);
+  }
+
+  50% {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes mdx-halo-rotate {
+  from {
+    transform: rotate(20deg);
+  }
+
+  to {
+    transform: rotate(380deg);
+  }
+}
+
+@keyframes mdx-neural-flicker {
+  from {
+    transform: scale(0.75);
+    opacity: 0.55;
+  }
+
+  to {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+@keyframes mdx-sparkle-pop {
+  0%,
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.4);
+  }
+
+  35% {
+    opacity: 0.95;
+    transform: rotate(45deg) scale(1);
+  }
+
+  65% {
+    opacity: 0.55;
+    transform: rotate(45deg) scale(0.75);
+  }
+}
+
+@keyframes mdx-thinking-dot {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes mdx-status-thinking {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes mdx-ambient-drift-one {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-25px, 18px);
+  }
+}
+
+@keyframes mdx-ambient-drift-two {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(20px, -20px);
+  }
+}
+
+@keyframes mdx-ambient-drift-three {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-15px, -15px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .ms-medly-layer {
+    padding: 10px;
+  }
+
+  .mdx-panel {
+    width: 100%;
+    height: min(92vh, 720px);
+    min-height: 430px;
+
+    border-radius: 24px;
+  }
+
+  .mdx-header {
+    padding: 13px 13px 12px 15px;
+  }
+
+  .mdx-messages {
+    padding: 18px 14px;
+  }
+
+  .mdx-composer {
+    padding: 10px 11px 11px;
+  }
+
+  .mdx-clear-chat {
+    width: 34px;
+    padding: 0;
+
+    justify-content: center;
+  }
+
+  .mdx-clear-chat > span:last-child {
+    display: none;
+  }
+
+  .mdx-message-content {
+    max-width: 86%;
+  }
+}
+
+@media (max-width: 430px) {
+  .mdx-avatar {
+    width: 47px;
+    height: 47px;
+    flex-basis: 47px;
+  }
+
+  .mdx-avatar-core {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mdx-avatar-core img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mdx-name-row h2 {
+    font-size: 15px;
+  }
+
+  .mdx-status {
+    font-size: 9px;
+  }
+
+  .mdx-header-actions {
+    gap: 5px;
+  }
+
+  .mdx-close-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .mdx-language {
+    display: none;
+  }
+
+  .mdx-message-content {
+    max-width: 88%;
+  }
+
+  .mdx-bubble {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mdx-panel,
+  .mdx-panel.is-speaking,
+  .mdx-avatar.is-speaking .mdx-avatar-core,
+  .mdx-avatar.is-speaking .halo-front,
+  .mdx-sparkle,
+  .mdx-neural,
+  .mdx-ambient-orb,
+  .mdx-thinking-bubble span {
+    animation: none !important;
+  }
+}
+
+.mdx-inline-error {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  flex: 0 0 auto;
+
+  margin: 0 17px 8px;
+  padding: 8px 10px;
+
+  border: 1px solid rgba(255, 120, 141, 0.16);
+  border-radius: 9px;
+
+  color: rgba(255, 198, 207, 0.78);
+
+  background: rgba(255, 92, 116, 0.045);
+
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.mdx-inline-error > span:first-child {
+  width: 15px;
+  height: 15px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 15px;
+
+  border-radius: 50%;
+
+  color: #ffd6dc;
+  background: rgba(255, 92, 116, 0.15);
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   MEDLY SPEECH SETTLE
+   Prevents the avatar from "blinking dead" immediately
+   when the spoken sentence finishes.
+   ========================================================= */
+
+.mdx-panel,
+.mdx-avatar,
+.mdx-avatar-core,
+.mdx-avatar-halo,
+.mdx-ai-ambient,
+.mdx-neural,
+.mdx-sparkle {
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease,
+    filter 240ms ease,
+    box-shadow 240ms ease,
+    background 240ms ease;
+}
+
+/* Keep the AI presence visually alive when speech ends */
+.mdx-panel:not(.is-speaking) .mdx-avatar-core {
+  opacity: 0.92;
+}
+
+.mdx-panel:not(.is-speaking) .mdx-avatar-halo {
+  opacity: 0.72;
+}
+
+.mdx-panel:not(.is-speaking) .mdx-ai-ambient {
+  opacity: 0.7;
+}
+
+/* Don't let neural details vanish like a hard cut */
+.mdx-panel:not(.is-speaking) .mdx-neural {
+  opacity: 0.7;
+}
+
+/* Speaking state */
+.mdx-panel.is-speaking .mdx-avatar-core {
+  opacity: 1;
+}
+
+.mdx-panel.is-speaking .mdx-avatar-halo {
+  opacity: 1;
+}
+
+.mdx-panel.is-speaking .mdx-ai-ambient {
+  opacity: 1;
+}
+
+.mdx-panel.is-speaking .mdx-neural {
+  opacity: 1;
+}
